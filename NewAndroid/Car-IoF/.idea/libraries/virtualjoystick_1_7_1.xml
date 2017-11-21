@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="virtualjoystick-1.7.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/io.github.controlwear/virtualjoystick/1.7.1/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/io.github.controlwear/virtualjoystick/1.7.1/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.controlwear/virtualjoystick/1.7.1/20f7a216f07707d7a2eaeb10a926acdc00c2f1a9/virtualjoystick-1.7.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

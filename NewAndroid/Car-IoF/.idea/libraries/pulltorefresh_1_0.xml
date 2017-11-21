@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="pulltorefresh-1.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/me.aflak.libraries/pulltorefresh/1.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/me.aflak.libraries/pulltorefresh/1.0/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.aflak.libraries/pulltorefresh/1.0/5d62aec0ec71022163a208ff7c879dcf615c7045/pulltorefresh-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

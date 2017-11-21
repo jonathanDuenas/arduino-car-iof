@@ -93,17 +93,17 @@
             android:layout_height="70dp"
             android:layout_marginTop="155dp"
             android:layout_marginLeft="0dp"
-            android:onClick="turnOnLights"
+            android:onClick="drive"
             android:background="#00FFFFFF"/>
 
         <Button
             android:id="@+id/backward"
             android:layout_width="50dp"
             android:layout_height="60dp"
-            android:layout_marginTop="125dp"
             android:layout_marginLeft="45dp"
-            android:onClick="turnOnLights"
-            android:background="#00FFFFFF"/>
+            android:layout_marginTop="125dp"
+            android:background="#00FFFFFF"
+            android:onClick="reverse" />
 
         <!-- Aun estoy aqui, soy invisible -->
         <io.github.controlwear.virtual.joystick.android.JoystickView
@@ -126,7 +126,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_weight="0.8">
+        android:layout_weight="1.5">
 
         <!--<ImageView
             android:layout_width="wrap_content"
@@ -135,12 +135,25 @@
             android:layout_gravity="center"
             android:src="@drawable/frontwards"/>-->
 
+        <Button
+            android:id="@+id/stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:onClick="stopCar"
+            android:textColor="@color/white"
+            android:background="@color/secondary"
+            android:text="STOP" />
+
+
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <ScrollView
@@ -164,39 +177,7 @@
                 android:gravity="bottom" />
         </ScrollView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/message"
-                android:visibility="invisible"
-                android:textColor="@color/white"
-                android:layout_weight="4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_toLeftOf="@+id/send"
-                android:layout_toStartOf="@+id/send"
-                android:hint="Your message"
-                android:imeOptions="actionSend" />
-
-            <Button
-                android:id="@+id/send"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignTop="@+id/message"
-                android:textColor="@color/white"
-                android:background="@color/secondary"
-                android:text="Send" />
-
-        </LinearLayout>
 
 
     </LinearLayout>

@@ -10,7 +10,9 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
@@ -32,8 +34,6 @@ import me.aflak.bluetooth.Bluetooth;
 public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCallback {
     private String name;
     private Bluetooth b;
-    private EditText message;
-    private Button send;
     private TextView text;
     private ImageView distance;
     private ImageView temperature;
@@ -47,6 +47,10 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
     private ScrollView scrollView;
     private boolean registered=false;
 
+
+    private boolean stop = true;
+    private boolean ahead = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +61,6 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
         text = (TextView)findViewById(R.id.text);
         temp = (TextView)findViewById(R.id.temp);
         dist = (TextView)findViewById(R.id.dist);
-        message = (EditText)findViewById(R.id.message);
-        send = (Button)findViewById(R.id.send);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
 
         distance = (ImageView)findViewById(R.id.distance_img);
@@ -68,15 +70,7 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
         dist.setText("? cm");
 
         text.setMovementMethod(new ScrollingMovementMethod());
-        send.setEnabled(false);
 
-        JoystickView joystick = (JoystickView) findViewById(R.id.joystick);
-        joystick.setOnMoveListener(new JoystickView.OnMoveListener() {
-            @Override
-            public void onMove(int angle, int strength) {
-                message.setText("AN:" + angle + "-ST:" + strength);
-            }
-        });
 
         b = new Bluetooth(this);
         b.enableBluetooth();
@@ -88,16 +82,6 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
 
         Display("Connecting...");
         b.connectToDevice(b.getPairedDevices().get(pos));
-
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String msg = message.getText().toString();
-                message.setText("");
-                b.send(msg);
-                Display("You: "+msg);
-            }
-        });
 
         IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
         registerReceiver(mReceiver, filter);
@@ -179,12 +163,7 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
     @Override
     public void onConnect(BluetoothDevice device) {
         Display("Connected to "+device.getName()+" - "+device.getAddress());
-        this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                send.setEnabled(true);
-            }
-        });
+        startTimer();
     }
 
     @Override
@@ -319,19 +298,67 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
         if (headlights){
             headlights = false;
             car.setBackground(getResources().getDrawable(R.drawable.velar));
-            for (int i = 0;i<5;i++){
-                b.send("o\n");
-                Thread.sleep(1);
-            }
 
         }
         else{
             car.setBackground(getResources().getDrawable(R.drawable.velar_lights_on));
-            for(int i=0; i<5; i++) {
-                b.send("e\n");
-                Thread.sleep(1);
-            }
+
             headlights = true;
         }
+    }
+
+    public void drive(View view) throws InterruptedException {
+        this.stop = false;
+        this.ahead = true;
+    }
+
+    public void reverse(View view) throws InterruptedException {
+        this.stop = false;
+        this.ahead = false;
+    }
+
+    public void stopCar(View view) throws InterruptedException {
+        this.stop = true;
+    }
+
+
+    private void startTimer(){
+
+        Handler h = new Handler(Looper.getMainLooper());
+        h.post(new Runnable() {
+            public void run() {
+                CountDownTimer counter = new CountDownTimer(30000, 500){
+                    public void onTick(long millisUntilDone){
+                        if(b.isConnected()){
+                            String val = "";
+
+                            if(stop)
+                                val+="s";
+                            else{
+                                if(ahead)
+                                    val+="a";
+                                else
+                                    val+="r";
+                            }
+
+                            if(headlights)
+                                val+="e";
+                            else
+                                val+="o";
+
+                            b.send("&" + val + "&"+"\n");
+
+                        }
+                    }
+
+                    public void onFinish() {
+                        startTimer();
+                    }
+                }.start();
+            }
+        });
+
+
+
     }
 }

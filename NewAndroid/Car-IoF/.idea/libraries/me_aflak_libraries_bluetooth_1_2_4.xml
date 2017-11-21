@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="me.aflak.libraries:bluetooth-1.2.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/me.aflak.libraries/bluetooth/1.2.4/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/me.aflak.libraries/bluetooth/1.2.4/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.aflak.libraries/bluetooth/1.2.4/2fc1c9d3b564658a4f9db6cd7a2ef1818daabc20/bluetooth-1.2.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

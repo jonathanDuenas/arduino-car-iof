@@ -1,0 +1,204 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:orientation="vertical"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:background="@color/background_color"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Chat">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/temp_img"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:src="@drawable/thermo_white"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/temp"
+                    tools:text="\?°C"
+                    android:gravity="center_vertical"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:layout_height="match_parent"
+                    android:text=""/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/distance_img"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:src="@drawable/distance_white"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/dist"
+                    tools:text="\? cm"
+                    android:textColor="@color/white"
+                    android:layout_height="match_parent"
+                    android:text=""/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/car_image"
+        android:layout_width="match_parent"
+        android:layout_weight="4"
+        android:background="@drawable/velar"
+        android:orientation="horizontal"
+        android:layout_height="0px">
+
+        <Button
+            android:id="@+id/headlights"
+            android:layout_width="155dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="20dp"
+            android:onClick="turnOnLights"
+            android:background="#00FFFFFF"/>
+
+        <Button
+            android:id="@+id/forward"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="155dp"
+            android:layout_marginLeft="0dp"
+            android:onClick="turnOnLights"
+            android:background="#00FFFFFF"/>
+
+        <Button
+            android:id="@+id/backward"
+            android:layout_width="50dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="125dp"
+            android:layout_marginLeft="45dp"
+            android:onClick="turnOnLights"
+            android:background="#00FFFFFF"/>
+
+        <!-- Aun estoy aqui, soy invisible -->
+        <io.github.controlwear.virtual.joystick.android.JoystickView
+            xmlns:custom="http://schemas.android.com/apk/res-auto"
+            android:visibility="invisible"
+            android:id="@+id/joystick"
+            android:layout_width="300px"
+            android:layout_height="wrap_content"
+            custom:JV_buttonColor="#FF6E40"
+            custom:JV_buttonSizeRatio="15%"
+            custom:JV_borderColor="#00796B"
+            custom:JV_backgroundColor="#009688"
+            custom:JV_borderWidth="4dp"
+            custom:JV_fixedCenter="false"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="0.8">
+
+        <!--<ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:src="@drawable/frontwards"/>-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="200px"
+            android:layout_above="@+id/message"
+            android:layout_alignEnd="@+id/send"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/send"
+            android:scrollbars="vertical">
+
+            <TextView
+                android:id="@+id/text"
+                android:textColor="@color/white"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom" />
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/message"
+                android:visibility="invisible"
+                android:textColor="@color/white"
+                android:layout_weight="4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@+id/send"
+                android:layout_toStartOf="@+id/send"
+                android:hint="Your message"
+                android:imeOptions="actionSend" />
+
+            <Button
+                android:id="@+id/send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/message"
+                android:textColor="@color/white"
+                android:background="@color/secondary"
+                android:text="Send" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">SmartDrive</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="connection_instruction">Debe estar emparejado con su dispositivo para verlo en la lista. Arrastre para actualizar</string>
+    <string name="device_not_found">BUSCAR</string>
+    <string name="scan_again">Volver a buscar</string>
+    <string name="intro_string_1">A project by:</string>
+    <string name="author_1">Jonathan Dueñas</string>
+    <string name="author_2">Gabriel García</string>
+    <string name="author_3">Luis De Paz</string>
+
+
+    <color name="bg">#C0C0C0</color>
+</resources>

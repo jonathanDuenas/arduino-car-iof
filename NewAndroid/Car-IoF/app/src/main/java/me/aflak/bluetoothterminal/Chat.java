@@ -28,6 +28,8 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 import me.aflak.bluetooth.Bluetooth;
 
@@ -38,15 +40,15 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
     private ImageView distance;
     private ImageView temperature;
 
-    //TODO
-    //Headlights Status
     private boolean headlights;
 
     private TextView temp;
+    private TextView direction;
+    private TextView speed;
+
     private TextView dist;
     private ScrollView scrollView;
     private boolean registered=false;
-
 
     private boolean stop = true;
     private boolean ahead = true;
@@ -61,6 +63,9 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
         text = (TextView)findViewById(R.id.text);
         temp = (TextView)findViewById(R.id.temp);
         dist = (TextView)findViewById(R.id.dist);
+
+        direction = (TextView)findViewById(R.id.direction);
+        speed = (TextView)findViewById(R.id.speed);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
 
         distance = (ImageView)findViewById(R.id.distance_img);
@@ -175,13 +180,11 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
 
     @Override
     public void onMessage(String message) {
-
-        switch(message.charAt(0)){
-            case 'T':
+        switch(message.substring(0,2)){
+            case "T:":
                 final String temp_p = message.substring(0);
                 if(true){
                     Log.d("Temperatura ", temp_p.substring(2));
-                    //DisplayT(message.substring(2)+ "°");
 
                     runOnUiThread(new Runnable() {
                         @Override
@@ -204,14 +207,11 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
                     });
                 }
 
-
-                //Log.d("Temperatura ", temp_p.substring(2));
-                //DisplayT(message.substring(2)+ "°");
                 break;
-            case 'D':
+            case "D:":
                 final String  dist_p = message;
                 final Vibrator vibrator = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
-                Log.d("kha:",dist_p);
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -230,10 +230,35 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
                 });
 
                 break;
+            case "P:":
+                final String directionT = message.substring(2);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        direction.setText(directionT);
+                    }
+                });
+                break;
+            case "V:":
+                final String speedT = message.substring(2);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        speed.setText(speedT + "km/s");
+                    }
+                });
+                break;
+            case "M:":
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        stop = true;
+                    }
+                });
+                break;
             default:
                 Display(name+": "+message);
                 break;
-
         }
     }
 
@@ -329,6 +354,11 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
             public void run() {
                 CountDownTimer counter = new CountDownTimer(30000, 500){
                     public void onTick(long millisUntilDone){
+                        Calendar rightNow = Calendar.getInstance();
+                        int currentHour = rightNow.get(Calendar.HOUR_OF_DAY);
+                        if(currentHour >= 18)
+                                headlights = true;
+
                         if(b.isConnected()){
                             String val = "";
 
@@ -340,25 +370,19 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
                                 else
                                     val+="r";
                             }
-
                             if(headlights)
                                 val+="e";
                             else
                                 val+="o";
 
                             b.send("&" + val + "&"+"\n");
-
                         }
                     }
-
                     public void onFinish() {
                         startTimer();
                     }
                 }.start();
             }
         });
-
-
-
     }
 }

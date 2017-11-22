@@ -146,6 +146,29 @@
             android:background="@color/secondary"
             android:text="STOP" />
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/speed"
+            tools:text="\?km/s"
+            android:gravity="center_vertical"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:layout_height="match_parent"
+            android:text=""/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/direction"
+            tools:text="\?"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:layout_height="match_parent"
+            android:text=""/>
 
 
     </LinearLayout>

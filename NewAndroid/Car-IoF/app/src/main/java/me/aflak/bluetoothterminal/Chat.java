@@ -178,8 +178,8 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
 
         switch(message.charAt(0)){
             case 'T':
-                final String temp_p = message;
-                if(!temp_p.matches("(.*)p =(.*)")){
+                final String temp_p = message.substring(0);
+                if(true){
                     Log.d("Temperatura ", temp_p.substring(2));
                     //DisplayT(message.substring(2)+ "°");
 

@@ -321,8 +321,19 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
                     public void onTick(long millisUntilDone){
                         Calendar rightNow = Calendar.getInstance();
                         int currentHour = rightNow.get(Calendar.HOUR_OF_DAY);
-                        if(currentHour >= 18)
+                        if(currentHour >= 18 || currentHour <= 5){
+                            if(!headlights){
                                 headlights = true;
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        LinearLayout car;
+                                        car = (LinearLayout)findViewById(R.id.car_image);
+                                        car.setBackground(getResources().getDrawable(R.drawable.velar_lights_on));
+                                    }
+                                });
+                            }
+                        }
 
                         if(b.isConnected()){
                             String val = "";

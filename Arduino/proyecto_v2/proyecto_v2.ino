@@ -86,18 +86,19 @@ void loop(){
   distance = readDistance();
   valores[cont] = distance;
 
-  if(distance <= 17)
+  if(distance <= 18)
     cont++;
   else
     cont =0;
 
-  if(cont == 3 && adelante && stopB==false){ 
+  if(cont >= 3 && adelante && stopB==false){ 
     halt();
     reverse(120);
     delay(1000);
 
     stopB = true;
-    cont = 0; 
+    cont = 0;
+    mySerial.println("M:S");
   }
   
   md6050();

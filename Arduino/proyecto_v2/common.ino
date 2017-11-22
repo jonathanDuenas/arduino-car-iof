@@ -40,6 +40,8 @@ void initMisc(){
  
  */
 
+long Vox = 0, Voy = 0, Voz = 0;
+
 void md6050(){
 
   Wire.beginTransmission(MPU_addr); // get ready to talk to MPU again
@@ -58,11 +60,11 @@ void md6050(){
   // the above lines have gathered Accellerometer values for X, Y, Z
   //  as well as Gyroscope values for X, Y, Z
 
-  mySerial.print("AcX = "); 
+  mySerial.print("AX:"); 
   mySerial.println(AcX ); // share accellerometer values over debug channel 
-  mySerial.print("AcY = "); 
+  mySerial.print("AY:"); 
   mySerial.println(AcY );
-  mySerial.print("AcZ = "); 
+  mySerial.print("AZ:"); 
   mySerial.println(AcZ );
   mySerial.print("T:"); 
   mySerial.println(Tmp/340.00+36.53);  //equation for temperature in degrees C from datasheet
@@ -72,6 +74,35 @@ void md6050(){
   mySerial.println(GyY );
   mySerial.print("GyZ = "); 
   mySerial.println(GyZ );
+
+  if(!stopB){
+    Vox = (Vox + (AcX/ 16384.0)*0.333)*3.6;
+    Voy = (Voy + (AcY/ 16384.0)*0.333)*3.6;
+    Voz = (Voz + (AcZ/ 16384.0)*0.333)*3.6;
+
+    long V = sqrt(Vox*Vox + Voy*Voy);
+
+    if( abs(Vox) >= abs(Voy)){
+      if(Vox >= 0)
+        mySerial.println("P:N");
+      else
+        mySerial.println("P:S");
+    }
+    else{
+      if(Voy >= 0)
+        mySerial.println("P:O");
+      else
+        mySerial.println("P:E");
+    }
+    mySerial.print("V:"); 
+    mySerial.println(V);
+  }else{
+    Vox = 0; Voy = 0; Voz = 0;
+    long V = 0;
+    mySerial.print("V:"); 
+    mySerial.println(V);
+    mySerial.println("P:?");
+  }
 }
 
 float readTemp() {
@@ -167,7 +198,7 @@ String getMessage(){
 String split(String data, char separator, int index){
   int found = 0;
   int strIndex[] = { 
-    0, -1       };
+    0, -1         };
   int maxIndex = data.length() - 1;
 
   for (int i = 0; i <= maxIndex && found <= index; i++) {
@@ -188,19 +219,20 @@ String codes[] = {
 String old = "";
 
 void enqueeMsg(String msg){
-  
+
   msg.trim();
-  
+
   Serial.print("MS:"+ msg + "SZ:");
   Serial.println(msg.length());
   if(msg != old && msg.length() == 4 && msg.charAt(0) == '&' && msg.charAt(3) == '&'){
     Serial.println("Entra");
     for(int i = 0; i<4;i++){
-       queue.push(msg.charAt(i));
+      queue.push(msg.charAt(i));
     }
     old = msg;
   }
 }
+
 
 
 

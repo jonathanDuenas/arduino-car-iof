@@ -54,15 +54,15 @@
       <file leaf-file-name="Chat.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/me/aflak/bluetoothterminal/Chat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-15">
-              <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="137" selection-end-column="5" />
+            <state relative-caret-position="210">
+              <caret line="102" column="5" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
               <folding>
-                <element signature="e#8033#8214#0" expanded="true" />
-                <element signature="e#8213#8214#0" expanded="true" />
-                <element signature="e#8353#8535#0" expanded="true" />
-                <element signature="e#8534#8535#0" expanded="true" />
-                <element signature="e#8614#8777#0" expanded="true" />
-                <element signature="e#8776#8777#0" expanded="true" />
+                <element signature="e#6652#6833#0" expanded="true" />
+                <element signature="e#6832#6833#0" expanded="true" />
+                <element signature="e#6972#7154#0" expanded="true" />
+                <element signature="e#7153#7154#0" expanded="true" />
+                <element signature="e#7233#7396#0" expanded="true" />
+                <element signature="e#7395#7396#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2116,12 +2116,12 @@
         <state relative-caret-position="2205">
           <caret line="180" column="57" selection-start-line="180" selection-start-column="57" selection-end-line="180" selection-end-column="57" />
           <folding>
-            <element signature="e#8033#8214#0" expanded="true" />
-            <element signature="e#8213#8214#0" expanded="true" />
-            <element signature="e#8353#8535#0" expanded="true" />
-            <element signature="e#8534#8535#0" expanded="true" />
-            <element signature="e#8614#8777#0" expanded="true" />
-            <element signature="e#8776#8777#0" expanded="true" />
+            <element signature="e#6652#6833#0" expanded="true" />
+            <element signature="e#6832#6833#0" expanded="true" />
+            <element signature="e#6972#7154#0" expanded="true" />
+            <element signature="e#7153#7154#0" expanded="true" />
+            <element signature="e#7233#7396#0" expanded="true" />
+            <element signature="e#7395#7396#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2142,12 +2142,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#8033#8214#0" expanded="true" />
-            <element signature="e#8213#8214#0" expanded="true" />
-            <element signature="e#8353#8535#0" expanded="true" />
-            <element signature="e#8534#8535#0" expanded="true" />
-            <element signature="e#8614#8777#0" expanded="true" />
-            <element signature="e#8776#8777#0" expanded="true" />
+            <element signature="e#6652#6833#0" expanded="true" />
+            <element signature="e#6832#6833#0" expanded="true" />
+            <element signature="e#6972#7154#0" expanded="true" />
+            <element signature="e#7153#7154#0" expanded="true" />
+            <element signature="e#7233#7396#0" expanded="true" />
+            <element signature="e#7395#7396#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2193,15 +2193,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/me/aflak/bluetoothterminal/Chat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="137" selection-end-column="5" />
+        <state relative-caret-position="210">
+          <caret line="102" column="5" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
           <folding>
-            <element signature="e#8033#8214#0" expanded="true" />
-            <element signature="e#8213#8214#0" expanded="true" />
-            <element signature="e#8353#8535#0" expanded="true" />
-            <element signature="e#8534#8535#0" expanded="true" />
-            <element signature="e#8614#8777#0" expanded="true" />
-            <element signature="e#8776#8777#0" expanded="true" />
+            <element signature="e#6652#6833#0" expanded="true" />
+            <element signature="e#6832#6833#0" expanded="true" />
+            <element signature="e#6972#7154#0" expanded="true" />
+            <element signature="e#7153#7154#0" expanded="true" />
+            <element signature="e#7233#7396#0" expanded="true" />
+            <element signature="e#7395#7396#0" expanded="true" />
           </folding>
         </state>
       </provider>

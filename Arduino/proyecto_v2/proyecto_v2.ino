@@ -26,7 +26,6 @@ void setup(){
 boolean adelante = true;
 boolean stopB = true;
 boolean led = false;
-
 int distance;
 
 void loop(){
@@ -72,8 +71,6 @@ void loop(){
     analogWrite(ledF, 0);
   }
 
-  
-
   if(!stopB){
     if(adelante){
       drive(120);
@@ -102,7 +99,6 @@ void loop(){
     stopB = true;
     cont = 0; 
   }
-  
   
   md6050();
   

@@ -59,19 +59,19 @@ void md6050(){
   //  as well as Gyroscope values for X, Y, Z
 
   mySerial.print("AcX = "); 
-  mySerial.println(AcX / 16384.0); // share accellerometer values over debug channel 
+  mySerial.println(AcX ); // share accellerometer values over debug channel 
   mySerial.print("AcY = "); 
-  mySerial.println(AcY / 16384.0);
+  mySerial.println(AcY );
   mySerial.print("AcZ = "); 
-  mySerial.println(AcZ / 16384.0);
-  mySerial.print("Tmp = "); 
+  mySerial.println(AcZ );
+  mySerial.print("T:"); 
   mySerial.println(Tmp/340.00+36.53);  //equation for temperature in degrees C from datasheet
   mySerial.print("GyX = "); 
-  mySerial.println(GyX /131.0); // share gyroscope values over debug channel
+  mySerial.println(GyX ); // share gyroscope values over debug channel
   mySerial.print("GyY = "); 
-  mySerial.println(GyY / 131.0);
+  mySerial.println(GyY );
   mySerial.print("GyZ = "); 
-  mySerial.println(GyZ / 131.0);
+  mySerial.println(GyZ );
 }
 
 float readTemp() {
